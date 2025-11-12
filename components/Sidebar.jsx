@@ -23,7 +23,7 @@ export default function Sidebar() {
           <div className="fixed w-full top-0 z-50 backdrop-blur-2xl">
             <div className="flex flex-row justify-between items-center py-4 ">
               {/* Left side */}
-              <div className="pl-6 flex justify-start gap-4 w-[200px]">
+              <div className="pl-2 md:pl-6 flex justify-start gap-4 w-[200px]">
                 <a
                   target="_blank"
                   rel="noreferrer"
