@@ -21,6 +21,7 @@ export default function Projects() {
                 src={cvlab}
                 alt="logo"
                 className="absolute inset-0 h-full w-full object-cover z-10"
+                onClick={() => window.open("https://cvlab.up.railway.app/", "_blank")}
               />
 
               <div className="absolute inset-0 bg-gradient-to-b from-yellow-400 to-black opacity-0 group-hover:opacity-85 transition-opacity duration-300 z-20" />
@@ -53,6 +54,9 @@ export default function Projects() {
                 src={careview}
                 alt="logo"
                 className="absolute inset-0 h-full w-full object-cover z-10"
+                onClick={() =>
+                  window.open("https://careview.up.railway.app/login", "_blank")
+                }
               />
 
               <div className="absolute inset-0 bg-gradient-to-b from-yellow-400 to-black opacity-0 group-hover:opacity-85 transition-opacity duration-300 z-20" />
@@ -61,7 +65,10 @@ export default function Projects() {
                 <button
                   className="mt-7 mb-2 cursor-pointer px-6 h-10 leading-[34px] border-2 border-yellow-400 rounded text-sm text-white bg-transparent uppercase font-bold transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 hover:text-black"
                   onClick={() =>
-                    window.open("https://careview.up.railway.app/login", "_blank")
+                    window.open(
+                      "https://careview.up.railway.app/login",
+                      "_blank"
+                    )
                   }
                 >
                   View Project

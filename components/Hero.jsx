@@ -16,7 +16,7 @@ export default function Hero(){
               <div className="pt-6 flex justify-center items-center">
                 <h2 className="text-4xl md:text-7xl items-center">software engineer.</h2>
               </div>
-              <div className="pt-10 flex justify-center items-center">
+              <div className="pt-4 lg:pt-10 flex justify-center items-center">
                 <p className="text-lg md:text-2xl items-center">computer science & ai @ newcastle university</p>
               </div>
 
