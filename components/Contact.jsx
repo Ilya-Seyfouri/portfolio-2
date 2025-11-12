@@ -79,7 +79,7 @@ export default function Contact() {
             <div className="flex justify-center pt-5 md:pt-5 pb-40">
               <button
                 type="submit"
-                className="px-32 md:px-48 py-4 font-bold text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br hover:scale-105 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 rounded-lg text-sm text-center me-2 mb-2 active:scale-95 transition-transform"
+                className="px-25 md:px-48 py-4 font-bold text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br hover:scale-105 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 rounded-lg text-sm text-center me-2 mb-2 active:scale-95 transition-transform"
               >
                 Send Message
               </button>

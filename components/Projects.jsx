@@ -16,12 +16,16 @@ export default function Projects() {
           </div>
           <div className="flex flex-col md:flex-row justify-center items-center pt-25 gap-20 max-w-6xl mx-auto">
             {/* Project 1 */}
-            <div className="group relative h-80 w-80 overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex-shrink-0">
+            <div
+              className="group relative h-80 w-80 overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex-shrink-0"
+              onClick={() =>
+                window.open("https://cvlab.up.railway.app/", "_blank")
+              }
+            >
               <Image
                 src={cvlab}
                 alt="logo"
                 className="absolute inset-0 h-full w-full object-cover z-10"
-                onClick={() => window.open("https://cvlab.up.railway.app/", "_blank")}
               />
 
               <div className="absolute inset-0 bg-gradient-to-b from-yellow-400 to-black opacity-0 group-hover:opacity-85 transition-opacity duration-300 z-20" />
@@ -49,14 +53,15 @@ export default function Projects() {
           </div>
           {/* Project 2 */}
           <div className="flex flex-col md:flex-row justify-center items-center pt-30 gap-20 max-w-6xl mx-auto">
-            <div className="group relative h-80 w-80 overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex-shrink-0">
+            <div className="group relative h-80 w-80 overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex-shrink-0"
+             onClick={() =>
+                  window.open("https://careview.up.railway.app/login", "_blank")}>
               <Image
                 src={careview}
                 alt="logo"
                 className="absolute inset-0 h-full w-full object-cover z-10"
-                onClick={() =>
-                  window.open("https://careview.up.railway.app/login", "_blank")
-                }
+               
+                
               />
 
               <div className="absolute inset-0 bg-gradient-to-b from-yellow-400 to-black opacity-0 group-hover:opacity-85 transition-opacity duration-300 z-20" />
