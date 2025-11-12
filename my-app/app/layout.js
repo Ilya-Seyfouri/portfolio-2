@@ -8,10 +8,7 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata = {
-  title: "CV Lab",
-  description: "Your description",
-};
+
 
 export default function RootLayout({ children }) {
   return (
