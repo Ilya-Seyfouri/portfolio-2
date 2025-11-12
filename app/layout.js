@@ -8,6 +8,11 @@ const inter = Inter({
   display: "swap",
 });
 
+export const metadata = {
+  title: "Ilya's Portfolio", // ← Change this
+  description: "my portfolio site!",
+};
+
 
 
 export default function RootLayout({ children }) {
