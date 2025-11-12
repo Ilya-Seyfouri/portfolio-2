@@ -9,7 +9,7 @@ export default function Hero(){
       <>
         <section id="home">
           <div className="container mx-auto">
-            <div className="pt-28">
+            <div className="pt-35">
               <div className="flex justify-center items-center">
                 <h2 className="text-5xl md:text-7xl">Hi, I'm Ilya</h2>
               </div>
