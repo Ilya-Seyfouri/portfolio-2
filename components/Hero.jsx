@@ -8,7 +8,7 @@ export default function Hero(){
     return (
       <>
         <section id="home">
-          <div className="container">
+          <div className="container mx-auto">
             <div className="pt-28">
               <div className="flex justify-center items-center">
                 <h2 className="text-5xl md:text-7xl">Hi, I'm Ilya</h2>

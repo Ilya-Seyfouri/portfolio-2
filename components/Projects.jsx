@@ -10,7 +10,7 @@ export default function Projects() {
   return (
     <>
       <section id="projects">
-        <div className="container">
+        <div className="container mx-auto">
           <div className="pt-35 flex justify-center items-center">
             <h2 className="text-6xl font-bold">Projects.</h2>
           </div>
