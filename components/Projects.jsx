@@ -18,9 +18,7 @@ export default function Projects() {
             {/* Project 1 */}
             <div
               className="group relative h-80 w-80 overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex-shrink-0"
-              onClick={() =>
-                window.open("https://cvlab.up.railway.app/", "_blank")
-              }
+              onClick={() => window.open("https://cvlab.ltd/", "_blank")}
             >
               <Image
                 src={cvlab}
@@ -33,9 +31,7 @@ export default function Projects() {
               <div className="absolute bottom-[-70px] group-hover:bottom-0 w-full z-30 p-5 transition-all duration-300 bg-gradient-to-b from-transparent to-black group-hover:bg-transparent">
                 <button
                   className="mt-7 mb-2 px-6 h-10 leading-[34px] cursor-pointer border-2 border-yellow-400 rounded text-sm text-white bg-transparent uppercase font-bold transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 hover:text-black"
-                  onClick={() =>
-                    window.open("https://cvlab.up.railway.app/", "_blank")
-                  }
+                  onClick={() => window.open("https://cvlab.ltd/", "_blank")}
                 >
                   View Project
                 </button>
@@ -53,15 +49,19 @@ export default function Projects() {
           </div>
           {/* Project 2 */}
           <div className="flex flex-col md:flex-row justify-center items-center pt-30 gap-20 max-w-6xl mx-auto">
-            <div className="group relative h-80 w-80 overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex-shrink-0"
-             onClick={() =>
-                  window.open("https://careview.up.railway.app/login", "_blank")}>
+            <div
+              className="group relative h-80 w-80 overflow-hidden rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex-shrink-0"
+              onClick={() =>
+                window.open(
+                  "https://careview2-847694957064.europe-west2.run.app/",
+                  "_blank",
+                )
+              }
+            >
               <Image
                 src={careview}
                 alt="logo"
                 className="absolute inset-0 h-full w-full object-cover z-10"
-               
-                
               />
 
               <div className="absolute inset-0 bg-gradient-to-b from-yellow-400 to-black opacity-0 group-hover:opacity-85 transition-opacity duration-300 z-20" />
@@ -71,8 +71,8 @@ export default function Projects() {
                   className="mt-7 mb-2 cursor-pointer px-6 h-10 leading-[34px] border-2 border-yellow-400 rounded text-sm text-white bg-transparent uppercase font-bold transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400 hover:text-black"
                   onClick={() =>
                     window.open(
-                      "https://careview.up.railway.app/login",
-                      "_blank"
+                      "https://careview2-847694957064.europe-west2.run.app/",
+                      "_blank",
                     )
                   }
                 >
@@ -94,16 +94,7 @@ export default function Projects() {
               </p>
             </div>
           </div>
-          <div className="hidden md:flex justify-center py-20 pb-50">
-            <iframe
-              src="https://www.youtube.com/embed/gxm6m2cMNlE"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="border-0 rounded-3xl lg:h-100 lg:w-215 md:h-100 md:w-170"
-            ></iframe>
-          </div>
+       
         </div>
       </section>
     </>
