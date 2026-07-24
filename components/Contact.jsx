@@ -43,7 +43,7 @@ export default function Contact() {
   return (
     <section id="contact">
       <div className="container mx-auto px-4">
-        <div className="flex justify-center pt-40 md:pt-5">
+        <div className="flex justify-center pt-40 md:pt-32">
           <h2 className="text-5xl md:text-6xl font-bold">Contact.</h2>
         </div>
 
