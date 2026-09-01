@@ -12,6 +12,7 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const navLinks = [
     { label: "Home", href: "#home" },
+    { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
   ];
