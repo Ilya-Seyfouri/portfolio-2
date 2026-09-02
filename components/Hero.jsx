@@ -1,6 +1,6 @@
 "use client"
 
-import ilya2 from "@/images/ilya3.jpg"
+import ilya2 from "@/images/ilya4-hero.jpg"
 import Image from "next/image";
 
 export default function Hero(){
@@ -23,7 +23,7 @@ export default function Hero(){
               <div className="pt-14 md:pt-10 flex justify-center items-center md:pb-30">
                 <Image
                 src={ilya2}
-                alt="logo"
+                alt="Ilya"
                 className="rounded-4xl  h-90 md:h-100 w-auto"
                 />
 
