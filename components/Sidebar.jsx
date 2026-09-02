@@ -10,11 +10,11 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  // Rooted at "/" so the nav also works from the app case study pages.
   const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/#home", id: "#home" },
+    { label: "Projects", href: "/#projects", id: "#projects" },
+    { label: "Experience", href: "/#experience", id: "#experience" },
   ];
 
   return (
@@ -120,19 +120,20 @@ export default function Sidebar() {
                         key={link.label}
                         className="hover:font-semibold"
                         onClick={(e) => {
-                          e.preventDefault(); // Prevent default anchor behavior
+                          const element = document.querySelector(link.id);
                           setIsOpen(false); // Close menu first
 
-                          // Wait for animation to complete, then scroll
+                          // Off the home page there is nothing to scroll to,
+                          // so let the link navigate instead.
+                          if (!element) return;
+
+                          e.preventDefault();
                           setTimeout(() => {
-                            const element = document.querySelector(link.href);
-                            if (element) {
-                              element.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start",
-                              });
-                            }
-                          }, 0); // Match this to your exit animation duration
+                            element.scrollIntoView({
+                              behavior: "smooth",
+                              block: "start",
+                            });
+                          }, 0);
                         }}
                       >
                         {link.label}

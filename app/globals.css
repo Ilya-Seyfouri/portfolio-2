@@ -25,3 +25,435 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
 }
+
+/* Screens dealt out from a project icon. */
+.fan-screen {
+  transition-property: transform, opacity;
+  transition-duration: 520ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fan-screen {
+    transition-duration: 1ms;
+    transition-delay: 0ms !important;
+  }
+}
+
+/*
+  Phone width for the screen fan. As tall as the viewport allows, then narrowed
+  if the whole fan would not fit across. --n (the screen count) is set on the
+  element, so the fit stays correct however many screens an app has.
+*/
+.screen-fan {
+  /*
+    Each phone is tilted 9deg, and a tilted 1:2.066 rectangle is far wider than
+    its flat width: cos9 + 2.066 * sin9 = 1.311 device widths. The fan spans the
+    gap between the outer phones plus that, and stands 2.357 device widths tall
+    once the tilt and the arc are counted. Sizing against those, not the flat
+    dimensions, is what keeps the outer phones off the viewport edges.
+  */
+  --stride: 0.5;
+  --span: calc(var(--stride) * (var(--n) - 1) + 1.311);
+  --pw: min(calc(74vh / 2.357), calc((100vw - 2rem) / var(--span)));
+}
+
+@media (min-width: 768px) {
+  .screen-fan {
+    --stride: 0.82;
+    --pw: min(calc(82vh / 2.357), calc((100vw - 5rem) / var(--span)));
+  }
+}
+
+/*
+  iPhone 11 shell, drawn to that device's real proportions relative to --pw
+  (the device width): 4.2% bezel all round, concentric corner radii, and a notch
+  sized to sit in the gap the status bar already leaves in an 828x1792 shot.
+*/
+.iphone {
+  --bezel: calc(var(--pw) * 0.042);
+  --radius: calc(var(--pw) * 0.13);
+  --btn: calc(var(--pw) * 0.011);
+  width: var(--pw);
+  padding: var(--bezel);
+  border-radius: var(--radius);
+  background: linear-gradient(
+    148deg,
+    #52525a 0%,
+    #232327 20%,
+    #141417 50%,
+    #26262b 80%,
+    #52525a 100%
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 30px 80px rgba(0, 0, 0, 0.85);
+}
+
+.iphone-screen {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  border-radius: calc(var(--radius) - var(--bezel));
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.9);
+}
+
+.iphone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--pw) * 0.495);
+  height: calc(var(--pw) * 0.066);
+  background: #000;
+  border-bottom-left-radius: calc(var(--pw) * 0.028);
+  border-bottom-right-radius: calc(var(--pw) * 0.028);
+}
+
+.iphone-btn {
+  position: absolute;
+  width: var(--btn);
+  border-radius: calc(var(--btn) * 0.5);
+  background: linear-gradient(90deg, #5c5c64, #26262b);
+}
+
+.iphone-btn-mute {
+  left: calc(-1 * var(--btn));
+  top: 16.5%;
+  height: 4.2%;
+}
+.iphone-btn-up {
+  left: calc(-1 * var(--btn));
+  top: 23.5%;
+  height: 8.5%;
+}
+.iphone-btn-down {
+  left: calc(-1 * var(--btn));
+  top: 33.5%;
+  height: 8.5%;
+}
+.iphone-btn-power {
+  right: calc(-1 * var(--btn));
+  top: 25.5%;
+  height: 14.5%;
+}
+
+/*
+  Laptop shell, drawn straight-on to match the flat iPhone treatment rather
+  than a faked perspective. Proportions relative to --lw (the lid width):
+  1.25% bezel on three sides, a 3.6% chin, a base 9% wider than the lid, and a
+  true 16:9 screen. The captures are 1920x933 browser viewports, and 933 plus
+  real browser chrome is exactly 1080 - so giving the chrome its real 13.6% of
+  screen height leaves the page area at 2.058, the captures' own ratio, and
+  nothing has to be cropped. Total device height is 0.625 lid widths.
+*/
+.laptop-stage {
+  --lw: min(calc((100vw - 2rem) / 1.09), calc(72vh / 0.625));
+}
+
+@media (min-width: 768px) {
+  .laptop-stage {
+    --lw: min(calc((100vw - 5rem) / 1.09), calc(80vh / 0.625));
+  }
+}
+
+.macbook {
+  position: relative;
+  width: var(--lw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  perspective: calc(var(--lw) * 1.6);
+}
+
+/*
+  The stage is near-black, so a drop shadow under the machine is invisible and
+  the whole thing reads as a screenshot pinned to nothing. It gets grounded with
+  light instead: a cool pool behind it, and a specular line on the surface under
+  its front edge. Both sit behind the lid and base at z-index -1.
+*/
+.macbook::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: 148%;
+  height: 190%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    50% 42% at 50% 50%,
+    rgba(158, 176, 218, 0.26) 0%,
+    rgba(112, 128, 168, 0.11) 42%,
+    transparent 73%
+  );
+}
+
+.macbook::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: calc(var(--lw) * -0.005);
+  width: 64%;
+  height: calc(var(--lw) * 0.007);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(210, 224, 255, 0.6) 50%,
+    transparent
+  );
+  filter: blur(calc(var(--lw) * 0.0035));
+}
+
+.macbook-lid {
+  position: relative;
+  width: 100%;
+  padding: calc(var(--lw) * 0.0125) calc(var(--lw) * 0.0125) calc(var(--lw) * 0.036);
+  border-radius: calc(var(--lw) * 0.018) calc(var(--lw) * 0.018) calc(var(--lw) * 0.005)
+    calc(var(--lw) * 0.005);
+  background: linear-gradient(160deg, #55555d 0%, #26262b 18%, #16161a 55%, #2b2b31 100%);
+  /*
+    A phone's rim is proportionally huge, so one hairline lights it. The lid is
+    six times wider and the same hairline disappears, so the aluminium gets a
+    lit top edge, a dimmer bottom one, and a soft outer bloom to lift it off the
+    stage. The 1px rim stays as the hard outline underneath all that.
+  */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
+    inset 1px 0 0 rgba(255, 255, 255, 0.2),
+    inset -1px 0 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.11),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 0 calc(var(--lw) * 0.05) rgba(150, 168, 208, 0.14);
+  transform-origin: bottom center;
+  transform: rotateX(-88deg);
+  transition: transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The camera, in the sliver of bezel above the glass. */
+.macbook-lid::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--lw) * 0.0042);
+  left: 50%;
+  width: calc(var(--lw) * 0.0042);
+  height: calc(var(--lw) * 0.0042);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #46536a 0%, #0b0d11 70%);
+}
+
+.macbook[data-open="true"] .macbook-lid {
+  transform: rotateX(0deg);
+}
+
+.macbook-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: calc(var(--lw) * 0.005);
+  background: #000;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.9);
+}
+
+/*
+  Glass: one slow reflection off the top-left corner and a lit lip where the
+  panel meets the bezel. Held under 8% so it reads as sheen on a screen rather
+  than haze over the site.
+*/
+.macbook-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    112deg,
+    rgba(255, 255, 255, 0.075) 0%,
+    rgba(255, 255, 255, 0.028) 16%,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 255, 255, 0) 84%,
+    rgba(255, 255, 255, 0.022) 100%
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13);
+}
+
+.macbook-tabs {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  height: calc(var(--lw) * 0.038);
+  padding-inline: calc(var(--lw) * 0.008);
+  background: #141416;
+}
+
+/* macOS window controls, at the top-left of the window where they really sit. */
+.macbook-lights {
+  flex: none;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--lw) * 0.0055);
+  padding-right: calc(var(--lw) * 0.009);
+}
+
+.macbook-lights i {
+  width: calc(var(--lw) * 0.0072);
+  height: calc(var(--lw) * 0.0072);
+  border-radius: 50%;
+}
+
+.macbook-lights i:nth-child(1) {
+  background: #ff5f57;
+}
+.macbook-lights i:nth-child(2) {
+  background: #febc2e;
+}
+.macbook-lights i:nth-child(3) {
+  background: #28c840;
+}
+
+.macbook-tab {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--lw) * 0.006);
+  width: 26%;
+  height: 78%;
+  padding-inline: calc(var(--lw) * 0.01);
+  border-radius: calc(var(--lw) * 0.006) calc(var(--lw) * 0.006) 0 0;
+  background: #1f1f22;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: calc(var(--lw) * 0.0125);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* The tab carries the site's own icon, the way a real one would. */
+.macbook-favicon {
+  flex: none;
+  width: calc(var(--lw) * 0.0115);
+  height: calc(var(--lw) * 0.0115);
+  border-radius: calc(var(--lw) * 0.0025);
+  object-fit: cover;
+}
+
+.macbook-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--lw) * 0.006);
+  height: calc(var(--lw) * 0.0367);
+  padding-inline: calc(var(--lw) * 0.01);
+  background: #1f1f22;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Back, forward and reload. Forward is dimmed: there is nowhere to go. */
+.macbook-nav {
+  flex: none;
+  width: calc(var(--lw) * 0.0135);
+  height: calc(var(--lw) * 0.0135);
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.macbook-nav-off {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.macbook-lock {
+  flex: none;
+  width: calc(var(--lw) * 0.0105);
+  height: calc(var(--lw) * 0.0105);
+  margin-right: calc(var(--lw) * 0.005);
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.42);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.macbook-url {
+  flex: 1;
+  margin-left: calc(var(--lw) * 0.006);
+  height: calc(var(--lw) * 0.024);
+  display: flex;
+  align-items: center;
+  padding-inline: calc(var(--lw) * 0.012);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: calc(var(--lw) * 0.0125);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Takes whatever the chrome leaves, which lands at the captures' own 2.058. */
+.macbook-page {
+  position: relative;
+  flex: 1;
+  background: #000;
+}
+
+/*
+  The fold. Straight-on, all you see of the hinge is a recessed sliver between
+  the lid's chin and the base, narrower than both — and it is the one part whose
+  absence made the base read as a separate grey bar floating under a screenshot.
+*/
+.macbook-hinge {
+  position: relative;
+  width: 90%;
+  height: calc(var(--lw) * 0.008);
+  border-radius: 0 0 calc(var(--lw) * 0.002) calc(var(--lw) * 0.002);
+  background: linear-gradient(180deg, #090a0c 0%, #1a1a1f 55%, #08090b 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.macbook-base {
+  position: relative;
+  width: 103.5%;
+  height: calc(var(--lw) * 0.028);
+  border-radius: 0 0 calc(var(--lw) * 0.01) calc(var(--lw) * 0.01);
+  /* Darkening at both ends turns a flat strip into a rounded extruded edge. */
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0) 11%,
+      rgba(0, 0, 0, 0) 89%,
+      rgba(0, 0, 0, 0.55) 100%
+    ),
+    linear-gradient(180deg, #3a3a41 0%, #24242a 45%, #15151a 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* The shallow cut in the front edge you lift the lid from. */
+.macbook-base::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--lw) * 0.11);
+  height: calc(var(--lw) * 0.009);
+  border-radius: calc(var(--lw) * 0.01) calc(var(--lw) * 0.01) 0 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macbook-lid,
+  .macbook[data-open="true"] .macbook-lid {
+    transform: none;
+    transition-duration: 1ms;
+  }
+}
