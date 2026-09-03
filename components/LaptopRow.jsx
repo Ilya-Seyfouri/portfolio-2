@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import useShowcaseMode from "@/components/useShowcaseMode";
+import { column } from "@/components/rowStyles";
 
 /**
  * A project row whose icon opens a laptop showing the site's landing page.
@@ -147,7 +148,7 @@ export default function LaptopRow({
         </a>
       )}
 
-      <div className="flex w-full flex-col gap-4 text-center md:w-[28rem] md:text-left">{children}</div>
+      <div className={column}>{children}</div>
 
       <div
         aria-hidden={!open}

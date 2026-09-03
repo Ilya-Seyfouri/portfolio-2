@@ -6,7 +6,7 @@ import cvlab from "@/images/logo.jpg";
 import slimmer from "@/images/SLIMMER65_ICON.png";
 import lifeline from "@/images/lifelinelogo.png";
 import hairsalon from "@/images/hairbynalan.png";
-import { detail, outcome } from "@/components/rowStyles";
+import { header, title, lead, detail, outcome } from "@/components/rowStyles";
 
 // Phone screens live in /public/screens/<app>/, in the order a new user meets
 // them rather than the order the files were named.
@@ -37,19 +37,6 @@ export default function Projects() {
 
           {/* Project 1 */}
           <div className="pt-25">
-            <ShowcaseRow icon={arc76} name="Arc76" screens={arc76Screens}>
-              <h2 className="text-3xl md:text-4xl font-bold">Arc76</h2>
-              <p className="text-lg text-white/85">A self-improvement app you can&rsquo;t lie to.</p>
-              <ul className={detail}>
-                <li>Every task you do is verified by a live photo - an AI vision check clears or rejects it in seconds.</li>
-                <li>App blocking through Apple&rsquo;s Screen Time API keeps TikTok and Instagram locked until the day&rsquo;s tasks are done.</li>
-              </ul>
-              <p className={outcome}>Live on the App Store.</p>
-            </ShowcaseRow>
-          </div>
-
-          {/* Project 2 */}
-          <div className="pt-30">
             <LaptopRow
               icon={cvlab}
               name="CV Lab"
@@ -57,22 +44,27 @@ export default function Projects() {
               host="cvlab.ltd"
               shot="/screens/sites/cvlab.png"
             >
-              <h2 className="text-3xl md:text-4xl font-bold">CV Lab</h2>
-              <p className="text-lg text-white/85">After noticing the state of the job market, I created a solution.</p>
-              <p className="text-base text-white/65">Send a job description and download two PDFs - a CV and a cover letter tailored to that specific role - in five seconds.</p>
-              <p className={outcome}>100+ users in the first week of launch.</p>
+              <div className={header}>
+                <h2 className={title}>CV Lab</h2>
+              </div>
+              <p className={lead}>After noticing the state of the job market, I created a solution:</p>
+              <p className={outcome}>An AI CV-tailoring platform generating £1,000+ in revenue.</p>
+              <ul className={detail}>
+                <li>Developed a five-stage pipeline: users upload a job description, the system extracts keywords and job responsibilities, then generates a downloadable CV and cover letter in 20 seconds.</li>
+                <li>Ranked 1st on Google for &lsquo;CV Lab&rsquo; ahead of competitors sharing the name, through SEO strategy and inbound links.</li>
+              </ul>
             </LaptopRow>
           </div>
 
-          {/* Project 3 */}
+          {/* Project 2 */}
           <div className="pt-30">
             <ShowcaseRow icon={slimmer} name="Slimmer" screens={slimmerScreens}>
-              <h2 className="text-3xl md:text-4xl font-bold">Slimmer</h2>
-              <p className="text-lg text-white/85">A fitness app that turns your goals into a personalized 60-day transformation plan.</p>
+              <div className={header}>
+                <h2 className={title}>Slimmer</h2>
+              </div>
+              <p className={lead}>An iOS fitness app which creates a personalised 60-day transformation plan.</p>
               <ul className={detail}>
-                <li>Generated 4+ hours of home workout footage with Kling 3.0 - ultra-realistic human motion, no studio, actors, or film crew.</li>
-                <li>Engineered a face scan feature that tracks visible progress week to week.</li>
-                <li>Shipped a photo calorie tracker - snap a meal, get instant macros.</li>
+                <li>Generated 4+ hours of ultra-realistic AI workout footage using Kling 3.0, replacing the need for a studio shoot with actors.</li>
               </ul>
               <p className={outcome}>
                 <a
@@ -82,13 +74,13 @@ export default function Projects() {
                   className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
                 >
                   Live on the App Store
-                </a>
-                .
+                </a>{" "}
+                with 1,000+ monthly active users
               </p>
             </ShowcaseRow>
           </div>
 
-          {/* Project 4 */}
+          {/* Project 3 */}
           <div className="pt-30">
             <LaptopRow
               icon={lifeline}
@@ -98,10 +90,29 @@ export default function Projects() {
               shot="/screens/sites/careview.png"
               linkOnMobile={false}
             >
-              <h2 className="text-3xl md:text-4xl font-bold">LifeLine</h2>
-              <p className="text-lg text-white/85">Identified inefficiencies in a care home&rsquo;s legacy system and built a more efficient solution.</p>
-              <p className={outcome}>Presented to the management team and got it approved.</p>
+              <div className={header}>
+                <h2 className={title}>LifeLine</h2>
+              </div>
+              <p className={lead}>Identified inefficiencies in a care homes management system and built a more efficient solution</p>
+              <ul className={detail}>
+                <li>Built a care priority engine that assesses each patient&rsquo;s vitals, visit logs and missed medications against their clinical history, returning a ranked list proposing actions to reassign medication, schedule a visit or to create a report.</li>
+              </ul>
             </LaptopRow>
+          </div>
+
+          {/* Project 4 */}
+          <div className="pt-30">
+            <ShowcaseRow icon={arc76} name="Arc76" screens={arc76Screens}>
+              <div className={header}>
+                <h2 className={title}>ARC76</h2>
+              </div>
+              <p className={lead}>An iOS self improvement app you cant lie to.</p>
+              <ul className={detail}>
+                <li>Tiktok &amp; Instagram are blocked using Apples Screen Time API until all of a users daily tasks are complete.</li>
+                <li>Every task is verified through a live photo - ai vision check approves/rejects it in seconds.</li>
+              </ul>
+              <p className={outcome}>Live on the app store. 2,000+ monthly users</p>
+            </ShowcaseRow>
           </div>
 
           {/* Project 5 */}
@@ -113,8 +124,10 @@ export default function Projects() {
               host="hairbynalaninciogu.up.railway.app"
               shot="/screens/sites/hair.png"
             >
-              <h2 className="text-3xl md:text-4xl font-bold">HairByNalan</h2>
-              <p className="text-lg text-white/85">A booking system and landing page for a hair salon that was losing appointments to missed calls and DMs.</p>
+              <div className={header}>
+                <h2 className={title}>HairByNalan</h2>
+              </div>
+              <p className={lead}>A booking system and landing page for a hair salon that was losing appointments to missed calls and DMs.</p>
               <p className={outcome}>Sales up 150% in the first month.</p>
             </LaptopRow>
           </div>

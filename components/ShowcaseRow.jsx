@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import useShowcaseMode from "@/components/useShowcaseMode";
+import { column } from "@/components/rowStyles";
 
 /**
  * A project row whose icon deals its app screens across the whole viewport.
@@ -76,7 +77,7 @@ export default function ShowcaseRow({ icon, name, screens, children }) {
         </button>
       )}
 
-      <div className="flex w-full flex-col gap-4 text-center md:w-[28rem] md:text-left">{children}</div>
+      <div className={column}>{children}</div>
 
       {/*
         The fan. Fixed to the viewport so the screens are not boxed in by the row,
