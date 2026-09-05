@@ -3,16 +3,7 @@ import Image from "next/image";
 import icog from "@/images/newlogo.png";
 import homeInstead from "@/images/homeinstead.png";
 import immersive from "@/images/logointern.png";
-import {
-  column,
-  header,
-  title,
-  org,
-  dates,
-  lead,
-  detail,
-  outcome,
-} from "@/components/rowStyles";
+import { column, header, title, meta, body } from "@/components/rowStyles";
 
 /*
  * Same geometry as the project rows: an icon of the same size, the same gaps,
@@ -64,15 +55,15 @@ export default function Experience() {
 
               <div className={column}>
                 <div className={header}>
-                  <h2 className={title}>Founder &amp; CEO</h2>
-                  <p className={org}>Incognito Labs</p>
-                  <p className={dates}>Mar 2026 &mdash; Present</p>
+                  <h2 className={title}>Incognito Labs</h2>
+                  <p className={meta}>
+                    <span>Founder &amp; CEO</span> &middot; <span>Mar 2026 &mdash; Present</span>
+                  </p>
                 </div>
-                <p className={lead}>A stealth company building consumer mobile apps + software for companies.</p>
-                <ul className={detail}>
-                  <li>Led both the developer and marketing teams, setting the strategy for each.</li>
-                </ul>
-                <p className={outcome}>10,000+ monthly users across all products.</p>
+                <div className={body}>
+                  <p>A stealth company building consumer mobile apps and software for companies.</p>
+                  <p>5,000+ monthly users across all products.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -91,15 +82,15 @@ export default function Experience() {
 
               <div className={column}>
                 <div className={header}>
-                  <h2 className={title}>Software Engineer Intern</h2>
-                  <p className={org}>Immersive Haus GmbH</p>
-                  <p className={dates}>Jun 2025 &mdash; Aug 2025</p>
+                  <h2 className={title}>Immersive Haus</h2>
+                  <p className={meta}>
+                    <span>Software Engineer Intern</span> &middot;{" "}
+                    <span>Jun 2025 &mdash; Aug 2025</span>
+                  </p>
                 </div>
-                <p className={lead}>Built the handover rules engine for an internal commissioning platform</p>
-                <ul className={detail}>
-                  <li>Cut the project readiness check from 1.2s to 180ms</li>
-                </ul>
-                <p className={outcome}>Used by 4 commissioning engineers across 3 live installations, resolving 11 defects raised during trial use.</p>
+                <div className={body}>
+                  <p>Designed the sequencing algorithm behind the commissioning scheduler, cutting testing time by 40% across 24 installations, sequencing 1,000+ checks.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -119,15 +110,16 @@ export default function Experience() {
 
               <div className={column}>
                 <div className={header}>
-                  <h2 className={title}>Software Engineer Intern</h2>
-                  <p className={org}>Home Instead</p>
-                  <p className={dates}>Jul 2024 &mdash; Aug 2024</p>
+                  <h2 className={title}>Home Instead</h2>
+                  <p className={meta}>
+                    <span>Software Engineering Intern</span> &middot;{" "}
+                    <span>Jun 2025 &mdash; Aug 2025</span> &middot;{" "}
+                    <span>Leeds, United Kingdom</span>
+                  </p>
                 </div>
-                <p className={lead}>Built Lifeline - a replacement care management system</p>
-                <ul className={detail}>
-                  <li>Audited the existing care-management software, presented a pitch to management after identifying limitations, securing approval to build the replacement.</li>
-                  <li>Led weekly meetings with the director, demonstrating progress, translating technical ideas into simple concepts and iterating on feedback.</li>
-                </ul>
+                <div className={body}>
+                  <p>Identified limitations in the existing care-management system, presenting a pitch to key stakeholders and securing approval to build the replacement (LifeLine).</p>
+                </div>
               </div>
             </div>
           </div>
