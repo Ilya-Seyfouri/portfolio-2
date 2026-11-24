@@ -40,8 +40,8 @@ export default function Projects() {
             <LaptopRow
               icon={cvlab}
               name="CV Lab"
-              url="https://cvlab.ltd/"
-              host="cvlab.ltd"
+              url="https://cvlab.up.railway.app/"
+              host="cvlab.up.railway.app"
               shot="/screens/sites/cvlab.png"
             >
               <div className={header}>
